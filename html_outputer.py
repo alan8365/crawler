@@ -1,5 +1,4 @@
 class HtmlOutputer(object):
-
     def __init__(self):
         self.datas = []
 
@@ -8,21 +7,18 @@ class HtmlOutputer(object):
             return
         self.datas.append(data)
 
-    def out_html(self):
-        fout = open('twoyeardata.html','w',encoding='utf-8')
+    def out_html(self, output_name):
+        with open(output_name, 'w', encoding='utf-8') as file_out:
 
-        fout.write("<meta charset='utf-8'>")
-        fout.write("<html>")
-        fout.write("<body>")
-        fout.write("<table>")
+            file_out.write("<meta charset='utf-8'>")
+            file_out.write("<html>")
+            file_out.write("<body>")
+            file_out.write("<table>")
 
+            for data in self.datas:
+                for d in data:
+                    file_out.write("%s" % d)
 
-        for data in self.datas:
-            for d in data:
-                fout.write("%s" % d)
-
-        fout.write("</table>")
-        fout.write("</body>")
-        fout.write("</html>")
-
-        fout.close()
+            file_out.write("</table>")
+            file_out.write("</body>")
+            file_out.write("</html>")

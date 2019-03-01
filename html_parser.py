@@ -15,10 +15,10 @@ class HtmlParser(object):
 
     def _get_new_urls(self, page_url, soup):
         new_urls = set()
-        # /view/123.htm
+        # 五專:112，四技:142，二技:132
         links = soup.find_all('option', value=re.compile(r"132"))
         for link in links:
-            new_url = 'https://aisap.nutc.edu.tw/public/day/course_list.aspx?sem=1071&clsno=' + link['value']
+            new_url = 'https://aisap.nutc.edu.tw/public/day/course_list.aspx?sem=1072&clsno=' + link['value']
             # new_full_url = urllib.parse.urljoin(page_url, new_url)
             new_urls.add(new_url)
         return new_urls
